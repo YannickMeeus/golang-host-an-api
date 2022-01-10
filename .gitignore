@@ -6,6 +6,8 @@
 *.dylib
 
 **/*
+!Makefile
+!README.md
 !**/*.go
 !**/go.mod
 !.gitignore
