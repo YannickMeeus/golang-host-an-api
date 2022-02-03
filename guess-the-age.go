@@ -37,6 +37,10 @@ func handlePost(w http.ResponseWriter, r *http.Request) {
 	var body GuessTheAgeRequest
 	err := json.NewDecoder(r.Body).Decode(&body)
 	if err != nil {
+		if (err.Error() == "EOF") {
+			http.Error(w, "Body Required", http.StatusBadRequest)
+			return
+		}
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
